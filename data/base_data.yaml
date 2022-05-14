@@ -1,0 +1,3 @@
+init_sql:
+  delete_employee: "delete from bs_user where mobile='13900043762'"
+  update_user_telephone: "UPDATE user SET telephone = '13500010004' WHERE id = 4"

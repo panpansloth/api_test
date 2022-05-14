@@ -1,0 +1,20 @@
+  - title: 添加员工成功-必选参数
+    data:
+      username: '业务猪猪'
+      mobile: '13900043762'
+      workNumber: '9527'
+    expected:
+      success: True
+      code: 10000
+      message: '操作成功'
+
+  - title: 添加员工成功-组合参数
+    data:
+      username: '业务猪猪'
+      mobile: '13900043762'
+      workNumber: '9527'
+      formOfEmployment: '2'
+    expected:
+      success: True
+      code: 10000
+      message: '操作成功'

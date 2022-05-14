@@ -1,0 +1,47 @@
+- title: 添加修改删除员工--成功
+  add:
+    data:
+      username: '业务猪猪'
+      mobile: '13900043762'
+      workNumber: '9527'
+      formOfEmployment: '2'
+    expected:
+      success: True
+      code: 10000
+      message: '操作成功'
+  modify:
+    data:
+      'username': '齐天大圣'
+    expected:
+      success: True
+      code: 10000
+      message: '操作成功'
+  query:
+    expected:
+      success: True
+      code: 10000
+      message: '操作成功'
+
+- title: 添加修改删除员工--失败
+  add:
+    data:
+      username: '业务猪猪'
+      mobile: '13900043762'
+      workNumber: '9527'
+      formOfEmployment: '2'
+    expected:
+      success: True
+      code: 10000
+      message: '操作成功'
+  modify:
+    data:
+      'username': '齐天大圣'
+    expected:
+      success: True
+      code: 10000
+      message: '操作成功'
+  query:
+    expected:
+      success: True
+      code: 10000
+      message: '操作成功'
