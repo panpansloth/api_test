@@ -21,3 +21,7 @@ class TestLogin:
         logger.info(f"断言 -> 期望结果：{login_data['expected']}，实际结果：{result}")
         with allure.step(f"断言 -> 期望结果：{login_data['expected']}，实际结果：{result}"):
             assert_util(result, login_data['expected'])
+
+# 根目录（api_test）下运行，生成测试报告
+# pytest --alluredir=./result/output --clean-alluredir
+# allure generate .\result\output -o .\result\html --clean

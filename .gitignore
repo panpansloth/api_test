@@ -1,5 +1,5 @@
 .pytest_cache
 log
-report
+result
 .idea
 *.pyc

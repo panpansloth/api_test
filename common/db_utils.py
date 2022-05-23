@@ -1,5 +1,6 @@
 import os
 import pprint
+import threading
 
 from common.logger import logger
 from common.read_data import data
@@ -17,14 +18,26 @@ db_conf.update(port=int(db_conf['port']))
 
 
 class DBUtil:
+    _instance_lock = threading.Lock()
+    _is_init = False
+
+    def __new__(cls, db_conf):
+        if not hasattr(DBUtil, "_instance"):
+            with DBUtil._instance_lock:
+                if not hasattr(DBUtil, "_instance"):
+                    DBUtil._instance = super(DBUtil, cls).__new__(cls)
+        return DBUtil._instance
+
     def __init__(self, db_conf=db_conf):
         # 建立数据库连接
-        self.conn = pymysql.connect(**db_conf, autocommit=True)
-        # 创建游标对象
-        self.cursor = self.conn.cursor()
+        if not self._is_init:
+            self._is_init = True
+            self.conn = pymysql.connect(**db_conf, autocommit=True)
+            # 创建游标对象
+            self.cursor = self.conn.cursor()
 
     def __delete__(self):
-        # 关闭游标
+        # 关闭游标?
         self.cursor.close()
         # 关闭数据库连接
         self.conn.close()
@@ -50,10 +63,11 @@ class DBUtil:
 
 
 db = DBUtil(db_conf)
+db1 = DBUtil(db_conf)
 if __name__ == '__main__':
-    res = db.select('select * from bs_user;')
-    pprint.pprint(res)
-    TEL = 13835967925
-    delete_sql = f"delete from bs_user where mobile='{TEL}';"
-    db.execute_db(delete_sql)
-
+    # res = db.select('select * from bs_user;')
+    # pprint.pprint(res)
+    # TEL = 13835967925
+    # delete_sql = f"delete from bs_user where mobile='{TEL}';"
+    # db.execute_db(delete_sql)
+    print(id(db), id(db1))
