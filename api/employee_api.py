@@ -1,16 +1,17 @@
 import os
-from common.get_header import get_header
 from common.read_data import data
+from common.get_header import header
 from core.rest_client import RestClient
-# from api import base_api
+from api import base_api
 
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 data_file_path = os.path.join(BASE_PATH, "config", "setting.ini")
 api_root_url = data.load_ini(data_file_path, 'host')['api_root_url']
-header = get_header()
+header = header.get_header()
 
 # s1 = base_api.single1
 # s2 = base_api.single2
+
 
 
 class EmployeeApi(RestClient):

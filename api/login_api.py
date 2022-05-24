@@ -1,6 +1,6 @@
 import os
 
-# from api import base_api
+from api import base_api
 from core.rest_client import RestClient
 from common.read_data import data
 

@@ -27,3 +27,4 @@ class Singleton:
 single1 = Singleton()
 single2 = Singleton()
 print(id(single1) == id(single2))
+
